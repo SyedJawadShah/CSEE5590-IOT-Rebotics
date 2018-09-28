@@ -1,0 +1,13 @@
+module.exports = function(RED) {
+    function LowerCaseNode(config) {
+        RED.nodes.createNode(this,config);
+        var node = this;
+        node.on('input', function(msg) {
+			var Farenhite= msg.payload;
+			var Celcius = (5/9) * (Farenhite-32); 
+            msg.payload = Celcius;
+            node.send(msg);
+        });
+    }
+    RED.nodes.registerType("exampl1",LowerCaseNode);
+}
